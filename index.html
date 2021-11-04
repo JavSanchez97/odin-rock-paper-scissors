@@ -86,6 +86,8 @@
             userPlay = userPlay.toLowerCase(); //get user's move
             alert(playRound(userPlay, pcPlay));
         }
+        console.log(playerWins);
+        console.log(pcWins);
         whoWon();
     }
     function whoWon(){
@@ -106,7 +108,12 @@
     // alert (playRound(userPlay, pcPlay));
 
     game();    
-  
+    if(confirm("Would you like to play again?")){
+        game();
+    }else{
+        //do nothing
+    }
+
 </script>
 
 </html>
