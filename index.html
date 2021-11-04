@@ -10,9 +10,12 @@
     
 </body>
 <script>
+    let playerWins=0;
+    let pcWins=0;
+
     function computerPlay() {
         let ran = Math.floor(Math.random() * 3)+1; //this will be 1-3, rock, paper, scissors
-        let compChoice
+        let compChoice;
         // console.log(ran);
         switch (ran){
             case 1:
@@ -29,58 +32,81 @@
 
         }
     }
+    //this function's first layer of if is based on player selection, then the second layer is for deciding if they win or not
     function playRound(playerSelection, computerSelection){
         console.log(playerSelection);
         console.log(computerSelection);
 
+
         if (playerSelection == 'rock'){
             if (computerSelection == 'rock'){
+                playerWins++;
+                pcWins++;
                 return ("It's a Tie! Rock VS Rock")
             } else if (computerSelection == 'paper'){
+                pcWins++;
                 return ("You Lose! Paper beats Rock")
             } else {
+                playerWins++;
                 return ("You Win! Rock beats Scissors")
             }
         } else if (playerSelection == 'paper'){
             if (computerSelection == 'rock'){
-                return ("You win! Rock beats Paper")
+                playerWins++;
+                return ( "You win! Paper beats rock")
             } else if (computerSelection == 'paper'){
+                playerWins++;
+                pcWins++;
                 return ("It's a Tie! Paper VS Paper")
             } else {
+                pcWins++;
                 return ("You Lost! Scissors beats Paper")
             } 
         }else if (playerSelection == 'scissors'){
             if (computerSelection == 'rock'){
+                pcWins++;
                 return ("You Lose! Rock beats Scissors")
             } else if (computerSelection == 'paper'){
+                playerWins++;
                 return ("You Win! Scissors beats paper")
             } else {
+                playerWins++;
+                pcWins++;
                 return ("It's a Tie! Scissors vs Scissors")
             }
-        }else if(playerSelection == 'poop' || 'peepee'){ //this was added because my neice was being weird and wanted to enter these options. 
-            return ("You are so gross")
         } else {
             return ("Methinks you didn't actually enter rock/paper/scissors")
         }
-        
-
-        // if (playerSelection == computerSelection){
-        //     alert("It's a Tie!");
-        // } else if () {
-        //     alert("It's a loss!");
-        // }
-
-
     }
-    let pcPlay = computerPlay();
-    let userPlay = window.prompt('Enter rock, paper, scissors: ');
-    userPlay = userPlay.toLowerCase();
-    console.log(pcPlay);
-    console.log(userPlay);
-    alert (playRound(userPlay, pcPlay));
 
+    function game(){
+        for (let i = 0; i <5; i++){
+            let pcPlay = computerPlay();//pc's move
+            let userPlay = window.prompt('Enter rock, paper, scissors: ');
+            userPlay = userPlay.toLowerCase(); //get user's move
+            alert(playRound(userPlay, pcPlay));
+        }
+        whoWon();
+    }
+    function whoWon(){
+        if (playerWins > pcWins){
+            alert("You Rock! And Paper & Scissor!");
+        } else if (playerWins === pcWins){
+            alert("Well, this was quite the coincidence");
+        } else {
+            alert("You can always try again!");
+        }
+    }
+    // let pcPlay = computerPlay();
+    // let userPlay = window.prompt('Enter rock, paper, scissors: ');
+    // userPlay = userPlay.toLowerCase();
 
+    // console.log(pcPlay);
+    // console.log(userPlay);
+    // alert (playRound(userPlay, pcPlay));
 
+    game();    
+  
 </script>
 
 </html>
