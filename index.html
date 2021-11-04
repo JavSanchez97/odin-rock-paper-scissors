@@ -16,21 +16,68 @@
         // console.log(ran);
         switch (ran){
             case 1:
-                computerPlay = 'Rock';
+                return computerSelection = 'Rock'.toLowerCase();
                 break;
             case 2:
-                computerPlay = 'Paper';
+                return computerSelection = 'Paper'.toLowerCase();
                 break;
             case 3:
-                computerPlay = 'Scissors';
+                return computerSelection = 'Scissors'.toLowerCase();
                 break;
             default:
-                console.log(computerPlay);//this is to check variable in case something went wrong
+                console.log(computerSelection);//this is to check variable in case something went wrong
 
         }
     }
-    // computerPlay();
-    // console.log(computerPlay);
+    function playRound(playerSelection, computerSelection){
+        console.log(playerSelection);
+        console.log(computerSelection);
+
+        if (playerSelection == 'rock'){
+            if (computerSelection == 'rock'){
+                return ("It's a Tie! Rock VS Rock")
+            } else if (computerSelection == 'paper'){
+                return ("You Lose! Paper beats Rock")
+            } else {
+                return ("You Win! Rock beats Scissors")
+            }
+        } else if (playerSelection == 'paper'){
+            if (computerSelection == 'rock'){
+                return ("You win! Rock beats Paper")
+            } else if (computerSelection == 'paper'){
+                return ("It's a Tie! Paper VS Paper")
+            } else {
+                return ("You Lost! Scissors beats Paper")
+            } 
+        }else if (playerSelection == 'scissors'){
+            if (computerSelection == 'rock'){
+                return ("You Lose! Rock beats Scissors")
+            } else if (computerSelection == 'paper'){
+                return ("You Win! Scissors beats paper")
+            } else {
+                return ("It's a Tie! Scissors vs Scissors")
+            }
+        }else if(playerSelection == 'poop' || 'peepee'){ //this was added because my neice was being weird and wanted to enter these options. 
+            return ("You are so gross")
+        } else {
+            return ("Methinks you didn't actually enter rock/paper/scissors")
+        }
+        
+
+        // if (playerSelection == computerSelection){
+        //     alert("It's a Tie!");
+        // } else if () {
+        //     alert("It's a loss!");
+        // }
+
+
+    }
+    let pcPlay = computerPlay();
+    let userPlay = window.prompt('Enter rock, paper, scissors: ');
+    userPlay = userPlay.toLowerCase();
+    console.log(pcPlay);
+    console.log(userPlay);
+    alert (playRound(userPlay, pcPlay));
 
 
 
