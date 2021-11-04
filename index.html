@@ -12,6 +12,17 @@
 <script>
     let playerWins=0;
     let pcWins=0;
+    let play = 1;
+
+    //having game out first causes the first game, then afterwards it always asks if you want to play again. 
+    game();
+    while(play==1){
+        if(confirm("Would you like to play again?")){
+            game();
+        }else{
+            play=0;
+        }
+    }
 
     function computerPlay() {
         let ran = Math.floor(Math.random() * 3)+1; //this will be 1-3, rock, paper, scissors
@@ -98,20 +109,6 @@
         } else {
             alert("You can always try again!");
         }
-    }
-    // let pcPlay = computerPlay();
-    // let userPlay = window.prompt('Enter rock, paper, scissors: ');
-    // userPlay = userPlay.toLowerCase();
-
-    // console.log(pcPlay);
-    // console.log(userPlay);
-    // alert (playRound(userPlay, pcPlay));
-
-    game();    
-    if(confirm("Would you like to play again?")){
-        game();
-    }else{
-        //do nothing
     }
 
 </script>
